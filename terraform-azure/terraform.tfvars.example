@@ -1,0 +1,44 @@
+# Copy this file to terraform.tfvars and update the values
+
+# Basic Configuration
+resource_group_name = "rg-fastapi-react-fullstack"
+location            = "East US"
+project_name        = "fastapi-react"
+environment         = "dev"
+owner               = "Your-Name"
+
+# Virtual Machine Configuration
+vm_size        = "Standard_B2s"  # 2 vCPUs, 4GB RAM - suitable for development
+admin_username = "azureuser"
+
+# SSH Configuration
+# Generate your SSH key pair with: ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+# Then get your public key with: cat ~/.ssh/id_rsa.pub
+ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQ... your-public-key-here"
+
+# Security Configuration
+# Restrict SSH access to your IP for better security
+# Get your current IP with: curl ifconfig.me
+allowed_ssh_sources = ["0.0.0.0/0"]  # WARNING: Change this to your IP address for production
+
+# Domain Configuration (optional)
+# If you have a domain, set it here. Otherwise, you'll use the public IP
+domain_name = ""  # Example: "yourdomain.com"
+
+# Additional Tags
+tags = {
+  "Project"     = "FastAPI-React-FullStack"
+  "Environment" = "Development"
+  "Owner"       = "Your-Name"
+  "CostCenter"  = "Development"
+}
+
+# VM Size Options:
+# Standard_B1s   - 1 vCPU, 1GB RAM   (Minimal - may be slow)
+# Standard_B2s   - 2 vCPUs, 4GB RAM  (Recommended for dev)
+# Standard_B4ms  - 4 vCPUs, 16GB RAM (Better performance)
+# Standard_D2s_v3- 2 vCPUs, 8GB RAM  (Production ready)
+
+# Azure Regions:
+# "East US", "West US 2", "Central US", "North Europe", "West Europe", 
+# "Southeast Asia", "East Asia", "Australia East", "UK South", etc.
